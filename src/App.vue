@@ -10,14 +10,20 @@ import PToast from 'primevue/toast'
       <router-view name="header" />
     </div>
     <p-dynamic-dialog />
-    <p-toast />
+    <p-toast position="top-right" />
     <p-confirm-popup />
     <router-view />
   </div>
 </template>
 
 <style scoped lang="scss">
-.app_layout_header {
-  margin-bottom: 20px;
+.app_layout {
+  background-color: rgba(248, 250, 252, 1);
+  border-radius: 20px;
+  padding: 30px 20px;
+
+  &_header {
+    margin-bottom: 20px;
+  }
 }
 </style>

@@ -26,18 +26,14 @@ export function useCourse() {
 
         // TODO
         course.courseTeacherList.forEach(async teacherId => {
-          console.log('1')
-          const findTeacherList = teacherList.value.filter(teacher => teacher.id === teacherId)
-          console.log('2')
-          if (findTeacherList.length === 0) {
-            console.log('3')
-            const teacher = await getTeacherList(teacherId)
-            teacherList.value.push(teacher)
-            course.teacherList.push(teacher)
-          } else {
-            console.log('6')
-            course.teacherList.push(...findTeacherList)
-          }
+          // const findTeacherList = teacherList.value.filter(teacher => teacher.id === teacherId)
+          // if (findTeacherList.length === 0) {
+          const teacher = await getTeacherList(teacherId)
+          teacherList.value.push(teacher)
+          course.teacherList = [teacher]
+          // } else {
+          // course.teacherList = [...findTeacherList]
+          // }
         })
       })
     })

@@ -92,26 +92,22 @@ const routes: RouteRecordRaw[] = [
   //         ]
   //     }
   // },
-  // {
-  //     path: '/all/news',
-  //     name: 'all.news',
-  //     component: NewsList,
-  //     meta: {
-  //         middleware: [
-  //             auth
-  //         ]
-  //     }
-  // },
-  // {
-  //     path: '/news/:id',
-  //     name: 'get.news',
-  //     component: NewsPage,
-  //     meta: {
-  //         middleware: [
-  //             auth
-  //         ]
-  //     }
-  // },
+  {
+    path: '/all/news',
+    name: 'all.news',
+    components: {
+      default: import('@modules/news/view/NewsListView.vue'),
+      header,
+    },
+  },
+  {
+    path: '/news/:id',
+    name: 'get.news',
+    components: {
+      default: import('@modules/news/view/NewsPage.vue'),
+      header,
+    },
+  },
   // {
   //     path: '/all/vacancy',
   //     name: 'all.vacancy',

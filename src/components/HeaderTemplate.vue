@@ -14,18 +14,20 @@ function logout() {
 }
 
 const obj = {
-  '/': 'Кабинет администратора',
-  '/all/course': 'Главная/Предметы',
-  '/all/group': 'Главная/Группы',
-  '/all/users': 'Главная/Пользователи',
+  home: 'Кабинет администратора',
+  'all.course': 'Главная/Предметы',
+  'all.group': 'Главная/Группы',
+  'all.users': 'Главная/Пользователи',
+  'all.news': 'Главная/Новости',
+  'get.news': 'Главная/Новость',
 }
 </script>
 
 <template>
   <div class="flex justify-content-between">
     <div class="flex align-items-center">
-      <p-btn v-if="route.fullPath !== '/'" text icon="pi pi-arrow-left" @click="$router.push({ name: 'home' })" />
-      <p class="m-0">{{ obj[route.fullPath] }}</p>
+      <p-btn v-if="route.fullPath !== '/'" text icon="pi pi-arrow-left" @click="$router.back()" />
+      <p class="m-0" :class="{ 'text-2xl font-medium': route.name === 'home' }">{{ obj[route.name] }}</p>
     </div>
 
     <div class="flex align-items-center gap-2">

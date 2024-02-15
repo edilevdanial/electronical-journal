@@ -6,7 +6,7 @@ import 'primeflex/primeflex.css'
 import 'primevue/resources/themes/lara-light-green/theme.css'
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
-// import './style.css'
+import './style.css'
 import ConfirmationService from 'primevue/confirmationservice'
 import ToastService from 'primevue/toastservice'
 
@@ -15,12 +15,14 @@ import { createPinia } from 'pinia'
 
 const app = createApp(App)
 
+app.use(PrimeVue, {
+  ripple: true,
+})
 app.use(DialogService)
 app.use(ToastService)
 app.use(ConfirmationService)
 app.use(router)
 app.use(createPinia())
-app.use(PrimeVue)
 app.mount('#admin-intc')
 
 export { app }

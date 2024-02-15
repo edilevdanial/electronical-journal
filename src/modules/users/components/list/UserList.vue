@@ -5,9 +5,32 @@ import PBtn from 'primevue/button'
 import PTag from 'primevue/tag'
 import { useUserList } from '@modules/users/composable'
 import { ref } from 'vue'
+import { IUser } from '@/interfaces'
+import { useDialog } from 'primevue/usedialog'
+import UserCreate from '@modules/users/components/create/UserCreate.vue'
 
 const { userList } = useUserList()
+const dialog = useDialog()
 const selectedUser = ref<any[]>([])
+
+function openUser() {
+  dialog.open(UserCreate, {
+    props: {
+      header: 'Создание пользователя',
+      style: 'width:30%',
+    },
+  })
+}
+
+function openEditUser(user: IUser) {
+  console.log(user)
+  dialog.open(UserCreate, {
+    props: {
+      header: 'Создание пользователя',
+      style: 'width:30%',
+    },
+  })
+}
 </script>
 
 <template>
@@ -21,12 +44,13 @@ const selectedUser = ref<any[]>([])
       table-style="min-width: 50rem"
     >
       <template #header>
-        <div class="flex justify-content-between">
+        <div class="flex justify-content-between align-items-center">
           {{ userList.length }} Пользователей
 
           <div class="flex gap-2">
-            <p-btn label="Добавить учителя" outlined icon="pi pi-plus" @click="$router.push({ name: 'create.user' })" />
-            <p-btn label="Добавить ученика" outlined icon="pi pi-plus" @click="$router.push({ name: 'create.user' })" />
+            <p-btn label="Добавить" outlined icon="pi pi-plus" @click="openUser" />
+            <!--             <p-btn label="Добавить ученика"-->
+            <!--             outlined icon="pi pi-plus" @click="$router.push({ name: 'create.user' })" />-->
           </div>
         </div>
       </template>
@@ -46,8 +70,8 @@ const selectedUser = ref<any[]>([])
         </template>
       </p-column>
       <p-column>
-        <template #body>
-          <p-btn icon="pi pi-pencil" class="text-gray-900" text />
+        <template #body="{ data }">
+          <p-btn icon="pi pi-pencil" class="text-gray-900" text @click="openEditUser(data)" />
           <p-btn class="text-red-500" text icon="pi pi-trash" />
         </template>
       </p-column>

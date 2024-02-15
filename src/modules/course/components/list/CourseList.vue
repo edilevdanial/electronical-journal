@@ -37,7 +37,7 @@ function openCreateCourse() {
       table-style="min-width: 50rem"
     >
       <template #header>
-        <div class="flex align-items-center justify-content-between">
+        <div class="flex align-items-center justify-content-between align-items-center">
           {{ courseList.length }} предметов
 
           <div class="flex gap-2">

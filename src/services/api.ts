@@ -14,6 +14,12 @@ instance.interceptors.request.use((config: AxiosRequestConfig) => {
   return config
 })
 
+instance.interceptors.response.use((config: AxiosRequestConfig) => {
+  // if (config.data.status === 403) {
+  // }
+  return config
+})
+
 // if (localStorage.getItem('token')) {
 //     // instance.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
 // }
